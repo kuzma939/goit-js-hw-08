@@ -85,17 +85,24 @@ function createMarkup(arr) {
 };
 function openModelClick(event) {
   event.preventDefault()
-  if (event.target === event.currentTarget) {
+  if (event.target === !event.currentTarget) {
     return;
   }
   const imageBig = event.target.dataset.source;
   const imageText = event.target.alt;
+  //const imageClose = 
+ 
   const instance = basicLightbox.create(`
   <div class="modal">
     <img src="${imageBig}" alt="${imageText}" width ="1128" height = "648">
     </div>`
   );
   instance.show(); 
+  const modalElement = instance.element().querySelector('.modal');
+modalElement.addEventListener('click', () => {
+  instance.close();
+});
 };
+
 
   
